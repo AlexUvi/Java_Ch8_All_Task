@@ -477,11 +477,13 @@
 //}
 
 /*
-    Сортировка методом пузырька
+    Bubble sorting
  */
+//import java.util.Arrays;
+//
 //public class Main {
 //    public static void main(String[] args) {
-//        int[] array = {10 , 1 , -2, 0, 8 -1, 2, 5, 9, 4} ;
+//        int[] array = {5, 0, 1, -4, 10, 3, 7, -6, 8} ;
 //        /* Внешний цикл постоянно сужает фрагмент массива,
 //         * который будет рассматриваться, ведь после каждого прохода
 //         * внутреннего цикла на последнем месте фрагмента будет
@@ -511,6 +513,8 @@
 //                    sorted = false;
 //                }
 //            }
+//            System.out.println(Arrays.toString(array));
+//
 //            /* Если массив отсортирован (т.е. не было ни одной перестановки
 //             * во внутреннем цикле, значит можно прекращать работу внешнего
 //             * цикла.
@@ -519,32 +523,57 @@
 //                break;
 //            }
 //        }
-//        for (int i = 0; i < array.length; i++) {
-//            System.out.print(array[i] + " ");
-//        }
+//
 //    }
 //}
+
+import java.util.Arrays;
+
+public class Main{
+        public static void main(String[] args) {
+            int[] arr = new int[] {5, 0, 1, -4, 10, 3, 7, -6, 8};
+            printArray(arr);
+            boolean isSorted = false;
+            while (!isSorted) {
+                isSorted = true;
+                for (int i = 1; i < arr.length; i++) {
+                    if (arr[i] < arr[i - 1]) {
+                        int temp = arr[i];
+                        arr[i] = arr[i - 1];
+                        arr[i - 1] = temp;
+                        isSorted = false;
+                    }
+                }
+                printArray(arr);
+            }
+        }
+
+    private static void printArray(int[] arr) {
+        System.out.println(Arrays.toString(arr));
+    }
+
+}
 
 /*
     Multidimensional array
  */
 
-import java.util.Arrays;
-
-public class Main{
-    public static void main(String[] args) {
-        int[][] da = new int[8][5];
-        for(int i=0; i<da.length; i++) {
-            for(int j=0; j<da[i].length; j++) {
-                da[i][j] = (int)(Math.random()*90) + 10;
-            }
-        }
-        for(int i=0; i<da.length; i++) {
-            for(int j=0; j<da[i].length; j++) {
-                System.out.print(da[i][j] + "\t");
-            }
-            System.out.println(); // Переходим на следующую строку
-        }
-    }
-
-}
+//import java.util.Arrays;
+//
+//public class Main{
+//    public static void main(String[] args) {
+//        int[][] da = new int[8][5];
+//        for(int i=0; i<da.length; i++) {
+//            for(int j=0; j<da[i].length; j++) {
+//                da[i][j] = (int)(Math.random()*90) + 10;
+//            }
+//        }
+//        for(int i=0; i<da.length; i++) {
+//            for(int j=0; j<da[i].length; j++) {
+//                System.out.print(da[i][j] + "\t");
+//            }
+//            System.out.println(); // Переходим на следующую строку
+//        }
+//    }
+//
+//}
