@@ -410,39 +410,141 @@
 //    }
 //}
 
-public class Main {
-    public static void main(String[] args) {
-        int[] a = {10 , 1 , 0, 0, 8 -1, 2, 5, 9, 4} ;
+/*
+    Сортировка выбором
+ */
 
-        for (int i = 0; i < a.length; i++) {
-            /* Предполагаем, что начальный элемент рассматриваемого
-             * фрагмента и будет минимальным.
-             */
-            int min = a[i]; // Предполагаемый минимальный элемент
-            int imin = i; // Индекс минимального элемента
-            /* Просматриваем оставшийся фрагмент массива и ищем там
-             * элемент, меньший предположенного минимума.
-             */
-            for (int j = i + 1; j < a.length; j++) {
-                /* Если находим новый минимум, то запоминаем его индекс.
-                 * И обновляем значение минимума.
-                 */
-                if (a[j] < min) {
-                    min = a[j];
-                    imin = j;
-                }
-            }
-            /* Проверяем, нашёлся ли элемент меньше, чем стоит на
-             * текущей позиции. Если нашёлся, то меняем элементы местами.
-             */
-            if (i != imin) {
-                int temp = a[i];
-                a[i] = a[imin];
-                a[imin] = temp;
+//public class Main {
+//    public static void main(String[] args) {
+//        int[] a = {10 , 1 , 0, 0, 8 -1, 2, 5, 9, 4} ;
+//
+//        for (int i = 0; i < a.length; i++) {
+//            /* Предполагаем, что начальный элемент рассматриваемого
+//             * фрагмента и будет минимальным.
+//             */
+//            int min = a[i]; // Предполагаемый минимальный элемент
+//            int imin = i; // Индекс минимального элемента
+//            /* Просматриваем оставшийся фрагмент массива и ищем там
+//             * элемент, меньший предположенного минимума.
+//             */
+//            for (int j = i + 1; j < a.length; j++) {
+//                /* Если находим новый минимум, то запоминаем его индекс.
+//                 * И обновляем значение минимума.
+//                 */
+//                if (a[j] < min) {
+//                    min = a[j];
+//                    imin = j;
+//                }
+//            }
+//            /* Проверяем, нашёлся ли элемент меньше, чем стоит на
+//             * текущей позиции. Если нашёлся, то меняем элементы местами.
+//             */
+//            if (i != imin) {
+//                int temp = a[i];
+//                a[i] = a[imin];
+//                a[imin] = temp;
+//            }
+//        }
+//        for (int i = 0; i < a.length; i++) {
+//            System.out.print(a[i] + " ");
+//        }
+//    }
+//}
+
+//import java.util.ArrayList;
+//import java.util.Arrays;
+//import java.util.LinkedList;
+//
+//public class Main {
+//    public static void main(String[] args) {
+//        int[] array = {10 , 1 , -2, 0, 8 -1, 2, 5, 9, 4} ;
+//        System.out.println(Arrays.toString(array));
+//        int[] new_array = Arrays.copyOf(array, array.length);
+//        Arrays.sort(new_array);
+//        System.out.println(Arrays.toString(new_array));
+//        System.out.println();
+//        ArrayList<Integer>arr_1 = new ArrayList(0);
+//        arr_1.add(0,100);
+//        arr_1.add(1,200);
+//        arr_1.add(2,300);
+//        arr_1.set(2,400);
+//        LinkedList<String>arr_2 = new LinkedList<>();
+//        arr_2.add(0,"Lexa! ");
+//        arr_2.add(1, "You're Welcom!");
+//        System.out.println(arr_1.get(2));
+//        System.out.println(arr_2.get(0) + arr_2.get(1));
+//    }
+//}
+
+/*
+    Сортировка методом пузырька
+ */
+//public class Main {
+//    public static void main(String[] args) {
+//        int[] array = {10 , 1 , -2, 0, 8 -1, 2, 5, 9, 4} ;
+//        /* Внешний цикл постоянно сужает фрагмент массива,
+//         * который будет рассматриваться, ведь после каждого прохода
+//         * внутреннего цикла на последнем месте фрагмента будет
+//         * оказываться нужный элемент (его не надо рассматривать снова).
+//         */
+//        for (int i = array.length - 1; i >= 2; i--) {
+//            /* В переменной sorted мы будем хранить признак того,
+//             * отсортирован ли массив. Перед каждым проходом внутреннего
+//             * цкла будем предполагать, что отсортирован, но если совершим
+//             * хоть одну перестановку, то значит ещё не конца отсортирован.
+//             * Этот приём, упрощающий сортировку, называется критерием Айверсона.
+//             */
+//            boolean sorted = true;
+//            /* Во внутреннем цикле мы проходимся по фрагменту массива, который
+//             * определяется внешним циклом. В этом фрагменте мы устанавливаем
+//             * правильный порядок между соседними элементами, так попарно
+//             * обрабатывая весь фрагмент.
+//             */
+//            for (int j = 0; j < i; j++) {
+//                /* Если порядок соседних элементов не правильный, то их
+//                 * надо обменять местами. И запомнить, что была перестановка.
+//                 */
+//                if (array[j] > array[j+1]) {
+//                    int temp = array[j];
+//                    array[j] = array[j+1];
+//                    array[j+1] = temp;
+//                    sorted = false;
+//                }
+//            }
+//            /* Если массив отсортирован (т.е. не было ни одной перестановки
+//             * во внутреннем цикле, значит можно прекращать работу внешнего
+//             * цикла.
+//             */
+//            if(sorted) {
+//                break;
+//            }
+//        }
+//        for (int i = 0; i < array.length; i++) {
+//            System.out.print(array[i] + " ");
+//        }
+//    }
+//}
+
+/*
+    Multidimensional array
+ */
+
+import java.util.Arrays;
+
+public class Main{
+    public static void main(String[] args) {
+        int[][] da = new int[8][5];
+        for(int i=0; i<da.length; i++) {
+            for(int j=0; j<da[i].length; j++) {
+                da[i][j] = (int)(Math.random()*90) + 10;
             }
         }
-        for (int i = 0; i < a.length; i++) {
-            System.out.print(a[i] + " ");
+        for(int i=0; i<da.length; i++) {
+            for(int j=0; j<da[i].length; j++) {
+                System.out.print(da[i][j] + "\t");
+            }
+            System.out.println(); // Переходим на следующую строку
         }
     }
+
 }
