@@ -23,7 +23,7 @@
 //            }
 //        }
 //        System.out.println(" ");
-//        for(int i = 0;i < Massive.length;i++){
+//        for(int i = 0; i < Massive.length; i++){
 //            System.out.println(Massive[i]);
 //        }
 //    }
@@ -527,31 +527,61 @@
 //    }
 //}
 
+//import java.util.Arrays;
+//
+//public class Main{
+//        public static void main(String[] args) {
+//            int[] arr = new int[] {5, 0, 1, -4, 10, 3, 7, -6, 8};
+//            printArray(arr);
+//            boolean isSorted = false;
+//            while (!isSorted) {
+//                isSorted = true;
+//                for (int i = 1; i < arr.length; i++) {
+//                    if (arr[i] < arr[i - 1]) {
+//                        int temp = arr[i];
+//                        arr[i] = arr[i - 1];
+//                        arr[i - 1] = temp;
+//                        isSorted = false;
+//                    }
+//                }
+//                printArray(arr);
+//            }
+//        }
+//
+//    private static void printArray(int[] arr) {
+//        System.out.println(Arrays.toString(arr));
+//    }
+//
+//}
+
 import java.util.Arrays;
+import java.util.Random;
 
-public class Main{
-        public static void main(String[] args) {
-            int[] arr = new int[] {5, 0, 1, -4, 10, 3, 7, -6, 8};
-            printArray(arr);
-            boolean isSorted = false;
-            while (!isSorted) {
-                isSorted = true;
-                for (int i = 1; i < arr.length; i++) {
-                    if (arr[i] < arr[i - 1]) {
-                        int temp = arr[i];
-                        arr[i] = arr[i - 1];
-                        arr[i - 1] = temp;
-                        isSorted = false;
-                    }
-                }
-                printArray(arr);
-            }
+public class Main {
+    public static void main(String[] args) {
+        int[] array = new int[10];
+        Random r = new Random();
+        boolean sort = true;
+        for(int i = 0; i < array.length; i++) {
+            array[i] = r.nextInt(100);
         }
-
-    private static void printArray(int[] arr) {
-        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(array));
+        for(int i = 0; i < array.length; i++) {
+            sort = true;
+            for(int j = 0; j < array.length - i - 1; j++) {
+                if(array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                    sort = false;
+                }
+            }
+            if(sort == true){
+                break;
+            }
+            System.out.println(Arrays.toString(array));
+        }
     }
-
 }
 
 /*
